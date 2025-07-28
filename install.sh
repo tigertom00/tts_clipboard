@@ -35,7 +35,7 @@ else
         PY_VER=$($PYTHON_CMD -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
         if [[ "$PY_VER" != "3.12" ]]; then
             echo "Warning: Python $PY_VER detected. Kokoro requires Python 3.12."
-            read -p " "
+            echo " "
             read -p "Python 3.12 not found. Install it? (y/N): " install_python
             if [[ "$install_python" =~ ^[Yy]$ ]]; then
                 if [ "$PACKAGE_MANAGER" = "dnf" ]; then
@@ -78,6 +78,7 @@ fi
 # Enter audio output directory
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 DEFAULT_AUDIO_DIR="$SCRIPT_DIR/output"
+echo " "
 read -p "Enter audio output directory (leave blank for $DEFAULT_AUDIO_DIR): " AUDIO_DIR_INPUT
 AUDIO_DIR=${AUDIO_DIR_INPUT:-$DEFAULT_AUDIO_DIR}
 
