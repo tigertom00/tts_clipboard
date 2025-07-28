@@ -37,7 +37,7 @@ default_filename="$(echo "$text" | tr '\n' ' ' | awk '{print $1"_"$2"_"$3}' | se
 
 form_output=$(yad --form --title="TTS Settings" \
     --field="Speed:" "1.0" \
-    --field="Voice:CB" "af_heart!af_bella!af_nicole!bf_emma!bf_isabella!af_alloy" \
+    --field="Voice:CB" "US-F: af_heart!US-F: af_bella!US-F: af_alloy!US-F: af_aoede!US-F: af_jessica!US-F: af_kore!US-F: af_nicole!US-F: af_nova!US-F: af_river!US-F: af_sarah!US-F: af_sky!US-M: am_adam!US-M: am_eric!US-M: am_echo!US-M: am_fenrir!US-M: am_liam!US-M: am_michael!US-M: am_onyx!US-M: am_puck!US-M: am_santa!UK-F: bf_emma!UK-F: bf_isabella!UK-F: bf_alice!UK-F: bf_lily!UK-M: bm_daniel!UK-M: bm_george!UK-M: bm_fable!UK-M: bm_lewis" \
     --field="Save and play?:CHK" "FALSE" \
     --field="Save only (do not play):CHK" "FALSE" \
     --field="Filename" "$default_filename")
@@ -50,7 +50,7 @@ if [ $? -ne 0 ]; then
 fi
 
 speed=$(echo "$form_output" | cut -d'|' -f1)
-voice=$(echo "$form_output" | cut -d'|' -f2)
+voice=$(echo "$form_output" | cut -d'|' -f2 | sed 's/^[^:]*: //')
 save_to_file=$(echo "$form_output" | cut -d'|' -f3)
 save_only=$(echo "$form_output" | cut -d'|' -f4)
 filename=$(echo "$form_output" | cut -d'|' -f5)
@@ -168,6 +168,8 @@ else
     notify-send "TTS Error" "No audio chunks generated"
     exit 1
 fi
+
+
 
 # Cleanup
 rm temp.txt chunk_*.wav
