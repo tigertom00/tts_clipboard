@@ -6,7 +6,7 @@ Kokoro is a lightweight neural TTS model (82M parameters) that runs offline, sup
 
 The project is open-source, MIT-licensed, and tested on Fedora, Debian/Ubuntu-based systems (like Linux Mint), and Arch Linux. It requires a few system dependencies but sets up everything via a virtual environment for isolation.
 
-![TTS Screenshot](https://raw.githubusercontent.com/tigertom00/tts_clipboard/refs/heads/main/tts_screenshot.png
+![TTS Screenshot](https://raw.githubusercontent.com/tigertom00/tts_clipboard/refs/heads/main/tts_screenshot.png)
 
 ## Features
 
