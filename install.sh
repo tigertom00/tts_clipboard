@@ -8,8 +8,8 @@ echo "3) Arch Linux (e.g., Manjaro, Arch Linux)"
 read -p "Enter number (1-3): " distro_choice
 
 case $distro_choice in
-    1) PACKAGE_MANAGER="dnf" ;;
-    2) PACKAGE_MANAGER="apt" ;;
+    1) PACKAGE_MANAGER="apt" ;;
+    2) PACKAGE_MANAGER="dnf" ;;
     3) PACKAGE_MANAGER="pacman" ;;
     *) echo "Invalid choice. Exiting."; exit 1 ;;
 esac
