@@ -29,6 +29,19 @@ elif [ "$PACKAGE_MANAGER" = "pacman" ]; then
     sudo pacman -S --noconfirm python-pip python git ffmpeg espeak-ng libnotify xclip yad
 fi
 
+# Prompt for AUDIO_DIR with default to <script dir>/output if blank
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+DEFAULT_AUDIO_DIR="$SCRIPT_DIR/output"
+read -p "Enter audio output directory (leave blank for $DEFAULT_AUDIO_DIR): " AUDIO_DIR
+AUDIO_DIR=${AUDIO_DIR:-$DEFAULT_AUDIO_DIR}
+
+# Create the audio directory if it doesn't exist
+mkdir -p "$AUDIO_DIR"
+
+# Save the AUDIO_DIR to a config file
+echo "AUDIO_DIR=\"$AUDIO_DIR\"" > config.sh
+chmod 644 config.sh
+
 # Clone the Kokoro repo
 git clone https://huggingface.co/hexgrad/Kokoro-82M
 

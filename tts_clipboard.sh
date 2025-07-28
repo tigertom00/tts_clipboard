@@ -9,6 +9,15 @@ fi
 # Set working directory
 cd "$(dirname "$0")" || { notify-send "TTS Error" "Failed to cd to directory"; exit 1; }
 
+# Source the config file for AUDIO_DIR
+if [ -f config.sh ]; then
+    source config.sh
+else
+    echo "Warning: config.sh not found. Using default AUDIO_DIR."
+    AUDIO_DIR="$(cd "$(dirname "$0")" && pwd)/output"
+    mkdir -p "$AUDIO_DIR"
+fi
+
 # Activate venv
 source .venv/bin/activate || { notify-send "TTS Error" "Failed to activate venv"; exit 1; }
 
@@ -58,8 +67,7 @@ fi
 
 # Set SAVE_OUTPUT if checkbox is checked
 if [[ "$save_to_file" == "TRUE" ]]; then
-    # Ensure the directory exists
-    AUDIO_DIR="$HOME/Music/Audio"
+    # Ensure the directory exists (already set from config.sh)
     mkdir -p "$AUDIO_DIR"
     SAVE_OUTPUT="$AUDIO_DIR/$filename"
 else
