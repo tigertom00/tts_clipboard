@@ -76,7 +76,7 @@ The project is open-source, MIT-licensed, and tested on Fedora, Debian/Ubuntu-ba
 ## Usage
 
 1. **Copy text to clipboard** (e.g., select text and Ctrl+C).
-2. **Run the script**:
+2. **Run the script**: (setup keyboard shortcut for ease of use)
    ```
    ./tts_clipboard.sh
    ```
