@@ -79,7 +79,7 @@ fi
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 DEFAULT_AUDIO_DIR="$SCRIPT_DIR/output"
 echo " "
-read -p "Enter audio output directory (leave blank for $DEFAULT_AUDIO_DIR): " AUDIO_DIR_INPUT
+read -p "Enter audio output directory for saved audio files (leave blank for $DEFAULT_AUDIO_DIR): " AUDIO_DIR_INPUT
 AUDIO_DIR=${AUDIO_DIR_INPUT:-$DEFAULT_AUDIO_DIR}
 
 # Create the audio directory if it doesn't exist
