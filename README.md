@@ -50,8 +50,9 @@ The project is open-source, MIT-licensed, and tested on Fedora, Debian/Ubuntu-ba
    ```
 
    - Select your distro (1 for Debian/Ubuntu/Mint, 2 for Fedora, 3 for Arch).
-   - It updates your system, installs deps, clones the Kokoro model repo, sets up a virtual env, and installs Python packages.
-   - If prompted, enter sudo password for package installation.
+   - The script updates your system, installs dependencies, clones the Kokoro model repo, sets up a Python 3.12 virtual environment, and installs Python packages.
+   - If Python 3.12 is not found, you will be prompted to install it. The script will exit if you decline, as Kokoro requires Python 3.12.
+   - If prompted, enter your sudo password for package installation.
    - The script makes the main file executable.
 
 3. **Verify Setup**:
